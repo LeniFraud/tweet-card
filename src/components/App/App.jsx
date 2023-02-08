@@ -1,6 +1,12 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { Container, ContactForm, Filter, ContactList } from 'components';
+import {
+  Container,
+  ContactForm,
+  Filter,
+  ContactList,
+  Notification,
+} from 'components';
 import { Title } from './App.styled';
 
 export class App extends React.Component {
@@ -18,18 +24,24 @@ export class App extends React.Component {
 
   addContact = ({ name, number }) => {
     const { contacts } = this.state;
-    if (contacts.find(contact => contact.name === name)) {
+    const isContactExists = contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (isContactExists) {
       alert(`Contact ${name} already exists!`);
-    } else {
-      const contact = {
-        id: nanoid(),
-        name,
-        number,
-      };
-      this.setState(({ contacts }) => ({
-        contacts: [contact, ...contacts],
-      }));
+      return false;
     }
+
+    const contact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
+    return true;
   };
 
   deleteContact = contactId => {
@@ -51,18 +63,28 @@ export class App extends React.Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { contacts, filter } = this.state;
     const filteredContacts = this.getVisibleContacts();
 
     return (
       <Container title="Phonebook">
         <ContactForm onSubmit={this.addContact} />
         <Title>Contacts</Title>
-        <Filter filter={filter} onFilterChange={this.filterChange} />
-        <ContactList
-          contacts={filteredContacts}
-          onDeleteContact={this.deleteContact}
-        />
+        {contacts.length !== 0 ? (
+          <>
+            <Filter filter={filter} onFilterChange={this.filterChange} />
+            {filteredContacts.length !== 0 ? (
+              <ContactList
+                contacts={filteredContacts}
+                onDeleteContact={this.deleteContact}
+              />
+            ) : (
+              <Notification message="No contacts found..." />
+            )}
+          </>
+        ) : (
+          <Notification message="There are no contacts yet. Please, add someone!" />
+        )}
       </Container>
     );
   }
