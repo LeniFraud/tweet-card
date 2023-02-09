@@ -12,12 +12,12 @@ import { Title } from './App.styled';
 export class App extends React.Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'The Shrike', number: '444-88-77' },
-      { id: 'id-2', name: 'Lamia Brawne', number: '555-12-98' },
-      { id: 'id-3', name: 'Fedmahn Kassad', number: '123-69-69' },
-      { id: 'id-4', name: 'Martin Silenus', number: '666-66-66' },
-      { id: 'id-5', name: 'Jonh Keats', number: '089-80-07' },
-      { id: 'id-6', name: 'Rachel Weintraub', number: '333-58-69' },
+      // { id: 'id-1', name: 'The Shrike', number: '444-88-77' },
+      // { id: 'id-2', name: 'Lamia Brawne', number: '555-12-98' },
+      // { id: 'id-3', name: 'Fedmahn Kassad', number: '123-69-69' },
+      // { id: 'id-4', name: 'Martin Silenus', number: '666-66-66' },
+      // { id: 'id-5', name: 'Jonh Keats', number: '089-80-07' },
+      // { id: 'id-6', name: 'Rachel Weintraub', number: '333-58-69' },
     ],
     filter: '',
   };
