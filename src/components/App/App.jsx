@@ -33,13 +33,13 @@ export class App extends React.Component {
       return false;
     }
 
-    const contact = {
+    const newContact = {
       id: nanoid(),
       name,
       number,
     };
     this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
+      contacts: [newContact, ...contacts],
     }));
     return true;
   };
@@ -62,6 +62,20 @@ export class App extends React.Component {
     );
   };
 
+  componentDidMount() {
+    const savedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (savedContacts) {
+      this.setState({ contacts: savedContacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
+
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = this.getVisibleContacts();
@@ -71,7 +85,7 @@ export class App extends React.Component {
         <ContactForm onSubmit={this.addContact} />
         <Title>Contacts</Title>
         {contacts.length !== 0 && (
-          <Filter filter={filter} onFilterChange={this.filterChange} />
+          <Filter value={filter} onFilterChange={this.filterChange} />
         )}
         {filteredContacts.length !== 0 && (
           <ContactList
@@ -85,21 +99,6 @@ export class App extends React.Component {
         {contacts.length !== 0 && filteredContacts.length === 0 && (
           <Notification message="No contacts found..." />
         )}
-        {/* {contacts.length !== 0 ? (
-          <>
-            <Filter filter={filter} onFilterChange={this.filterChange} />
-            {filteredContacts.length !== 0 ? (
-              <ContactList
-                contacts={filteredContacts}
-                onDeleteContact={this.deleteContact}
-              />
-            ) : (
-              <Notification message="No contacts found..." />
-            )}
-          </>
-        ) : (
-          <Notification message="There are no contacts yet. Please, add someone!" />
-        )} */}
       </Container>
     );
   }
