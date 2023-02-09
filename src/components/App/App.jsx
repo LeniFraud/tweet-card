@@ -70,7 +70,22 @@ export class App extends React.Component {
       <Container title="Phonebook">
         <ContactForm onSubmit={this.addContact} />
         <Title>Contacts</Title>
-        {contacts.length !== 0 ? (
+        {contacts.length !== 0 && (
+          <Filter filter={filter} onFilterChange={this.filterChange} />
+        )}
+        {filteredContacts.length !== 0 && (
+          <ContactList
+            contacts={filteredContacts}
+            onDeleteContact={this.deleteContact}
+          />
+        )}
+        {contacts.length === 0 && (
+          <Notification message="There are no contacts yet. Please, add someone!" />
+        )}
+        {contacts.length !== 0 && filteredContacts.length === 0 && (
+          <Notification message="No contacts found..." />
+        )}
+        {/* {contacts.length !== 0 ? (
           <>
             <Filter filter={filter} onFilterChange={this.filterChange} />
             {filteredContacts.length !== 0 ? (
@@ -84,7 +99,7 @@ export class App extends React.Component {
           </>
         ) : (
           <Notification message="There are no contacts yet. Please, add someone!" />
-        )}
+        )} */}
       </Container>
     );
   }
