@@ -22,6 +22,20 @@ export class App extends React.Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const savedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (savedContacts) {
+      this.setState({ contacts: savedContacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
+
   addContact = ({ name, number }) => {
     const { contacts } = this.state;
     const isContactExists = contacts.some(
@@ -61,20 +75,6 @@ export class App extends React.Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-
-  componentDidMount() {
-    const savedContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (savedContacts) {
-      this.setState({ contacts: savedContacts });
-    }
-  }
-
-  componentDidUpdate(_, prevState) {
-    const { contacts } = this.state;
-    if (prevState.contacts !== contacts) {
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-    }
-  }
 
   render() {
     const { contacts, filter } = this.state;
