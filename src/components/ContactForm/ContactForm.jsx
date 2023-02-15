@@ -1,30 +1,50 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
-const INITIAL_STATE = {
-  name: '',
-  number: '',
-};
+// const INITIAL_STATE = {
+//   name: '',
+//   number: '',
+// };
 
 export const ContactForm = ({ onSubmit }) => {
-  const [contactInfo, setContactInfo] = useState({ ...INITIAL_STATE });
-  const { name, number } = contactInfo;
+  // const [contactInfo, setContactInfo] = useState({ ...INITIAL_STATE });
+  // const { name, number } = contactInfo;
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
+  // const handleChange = e => {
+  //   const { name, value } = e.currentTarget;
+  //   setContactInfo(prevContactInfo => ({ ...prevContactInfo, [name]: value }));
+  // };
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
-    // setContactInfo({ [name]: value });
-    // setContactInfo({ ...contactInfo, [name]: value });
-    setContactInfo(prevContactInfo => ({ ...prevContactInfo, [name]: value }));
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+
+      case 'number':
+        setNumber(value);
+        break;
+
+      default:
+        return;
+    }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const isSuccess = onSubmit({ ...contactInfo });
+    // const isSuccess = onSubmit({ ...contactInfo });
+    const isSuccess = onSubmit(name, number);
     if (isSuccess) reset();
   };
 
-  const reset = () => setContactInfo({ ...INITIAL_STATE });
+  const reset = () => {
+    setName('');
+    setNumber('');
+  };
 
   return (
     <Form onSubmit={handleSubmit}>

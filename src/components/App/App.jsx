@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { nanoid } from 'nanoid';
 import {
   Container,
@@ -19,25 +20,19 @@ import { Title } from './App.styled';
 // ];
 
 export const App = () => {
-  const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem('contacts')) ?? []
-  );
+  // custom hook for training
+  const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [filter, setFilter] = useState('');
 
-  // перевірити, чому не працює, якшо в useState -> contacts = []
+  // const [contacts, setContacts] = useState(
+  //   () => JSON.parse(localStorage.getItem('contacts')) ?? []
+  // );
   // useEffect(() => {
-  //   const savedContacts = JSON.parse(localStorage.getItem('contacts'));
-  //   if (savedContacts) {
-  //     setContacts(savedContacts);
-  //   }
-  // }, []);
+  //   if (contacts === []) return;
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  useEffect(() => {
-    if (contacts === []) return;
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const addContact = ({ name, number }) => {
+  const addContact = (name, number) => {
     const isContactExists = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
@@ -60,8 +55,6 @@ export const App = () => {
   const deleteContact = contactId =>
     setContacts(contacts.filter(contact => contact.id !== contactId));
 
-  const filterChange = e => setFilter(e.currentTarget.value);
-
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase().trim();
     return contacts.filter(contact =>
@@ -69,25 +62,31 @@ export const App = () => {
     );
   };
 
-  const filteredContacts = getVisibleContacts();
+  const isFilteredContacts = getVisibleContacts().length;
+  const isSavedContacts = contacts.length;
 
   return (
     <Container title="Phonebook">
       <ContactForm onSubmit={addContact} />
       <Title>Contacts</Title>
-      {contacts.length !== 0 && (
-        <Filter value={filter} onFilterChange={filterChange} />
+      {!!isSavedContacts && (
+        <Filter
+          value={filter}
+          onFilterChange={e => {
+            setFilter(e.currentTarget.value);
+          }}
+        />
       )}
-      {filteredContacts.length !== 0 && (
+      {!!isFilteredContacts && (
         <ContactList
-          contacts={filteredContacts}
+          contacts={getVisibleContacts()}
           onDeleteContact={deleteContact}
         />
       )}
-      {contacts.length === 0 && (
+      {!isSavedContacts && (
         <Notification message="There are no contacts yet. Please, add someone!" />
       )}
-      {contacts.length !== 0 && filteredContacts.length === 0 && (
+      {!!isSavedContacts && !isFilteredContacts && (
         <Notification message="No contacts found..." />
       )}
     </Container>
