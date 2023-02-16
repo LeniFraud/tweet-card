@@ -55,6 +55,8 @@ export const App = () => {
   const deleteContact = contactId =>
     setContacts(contacts.filter(contact => contact.id !== contactId));
 
+  const filterChange = e => setFilter(e.currentTarget.value);
+
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase().trim();
     return contacts.filter(contact =>
@@ -70,12 +72,7 @@ export const App = () => {
       <ContactForm onSubmit={addContact} />
       <Title>Contacts</Title>
       {!!isSavedContacts && (
-        <Filter
-          value={filter}
-          onFilterChange={e => {
-            setFilter(e.currentTarget.value);
-          }}
-        />
+        <Filter value={filter} onFilterChange={filterChange} />
       )}
       {!!isFilteredContacts && (
         <ContactList
