@@ -1,12 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export const useLocalStorage = (key, defaultValue) => {
+export const useLocalStorage = (key, initialState) => {
   const [state, setState] = useState(
-    () => JSON.parse(localStorage.getItem(key)) ?? defaultValue
+    () => JSON.parse(localStorage.getItem(key)) ?? initialState
   );
+  const firstRender = useRef(true);
 
   useEffect(() => {
-    if (state === []) return;
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
     localStorage.setItem(key, JSON.stringify(state));
   }, [key, state]);
 

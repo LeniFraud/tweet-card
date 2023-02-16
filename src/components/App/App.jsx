@@ -20,17 +20,8 @@ import { Title } from './App.styled';
 // ];
 
 export const App = () => {
-  // custom hook for training
   const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [filter, setFilter] = useState('');
-
-  // const [contacts, setContacts] = useState(
-  //   () => JSON.parse(localStorage.getItem('contacts')) ?? []
-  // );
-  // useEffect(() => {
-  //   if (contacts === []) return;
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
 
   const addContact = (name, number) => {
     const isContactExists = contacts.some(
