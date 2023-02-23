@@ -14,14 +14,6 @@ const contactsSlice = createSlice({
 
   reducers: {
     addContact: (state, action) => {
-      //   const isContactExists = state.contacts.some(
-      //     contact =>
-      //       contact.name.toLowerCase() === action.payload.name.toLowerCase()
-      //   );
-
-      //   if (isContactExists)
-      //     return alert(`Contact ${action.payload.name} already exists!`);
-
       state.contacts = [action.payload, ...state.contacts];
     },
 
