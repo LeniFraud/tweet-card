@@ -1,7 +1,7 @@
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
@@ -19,17 +19,14 @@ export const ContactForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const name = e.target.name.value;
-    // const number = e.target.number.value;
     const isContactExists = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     if (isContactExists) return alert(`Contact ${name} already exists!`);
 
-    dispatch(addContact({ id: nanoid(), name, number }));
+    dispatch(addContact({ name, number }));
 
     reset();
-    // e.target.reset();
   };
 
   const reset = () => {

@@ -4,3 +4,4 @@ export * from './ContactList/ContactList';
 export * from './ContactListItem/ContactListItem';
 export * from './Filter/Filter';
 export * from './Notification/Notification';
+export * from './Loader/Loader';
