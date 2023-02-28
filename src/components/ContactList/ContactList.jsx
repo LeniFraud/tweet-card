@@ -1,21 +1,16 @@
 import { useSelector } from 'react-redux';
-import { selectContacts, selectFilter, selectIsLoading } from 'redux/selectors';
+import {
+  selectContacts,
+  selectIsLoading,
+  selectVisibleContacts,
+} from 'redux/selectors';
 import { ContactListItem, Notification } from 'components';
 import { List } from './ContactList.styled';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
-  const filter = useSelector(selectFilter);
-
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase().trim();
-    return contacts?.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
-
-  const visibleContacts = getVisibleContacts();
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
     <>

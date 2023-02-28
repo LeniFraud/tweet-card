@@ -54,29 +54,6 @@ const contactsSlice = createSlice({
       })
       .addCase(deleteContact.rejected, handleRejected);
   },
-
-  // extraReducers: {
-  //   [fetchContacts.pending]: handlePending,
-  //   [addContact.pending]: handlePending,
-  //   [deleteContact.pending]: handlePending,
-  //   [fetchContacts.rejected]: handleRejected,
-  //   [addContact.rejected]: handleRejected,
-  //   [deleteContact.rejected]: handleRejected,
-  //   [fetchContacts.fulfilled](state, action) {
-  //     state.contacts.isLoading = false;
-  //     state.contacts.items = action.payload;
-  //   },
-  //   [addContact.fulfilled](state, action) {
-  //     state.contacts.isLoading = false;
-  //     state.contacts.items = [action.payload, ...state.contacts.items];
-  //   },
-  //   [deleteContact.fulfilled](state, action) {
-  //     state.contacts.isLoading = false;
-  //     state.contacts.items = state.contacts.items.filter(
-  //       contact => contact.id !== action.payload.id
-  //     );
-  //   },
-  // },
 });
 
 export const contactsReducer = contactsSlice.reducer;
