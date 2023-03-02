@@ -3,7 +3,7 @@ import {
   selectContacts,
   selectIsLoading,
   selectVisibleContacts,
-} from 'redux/selectors';
+} from 'redux/contacts/selectors';
 import { ContactListItem, Notification } from 'components';
 import { List } from './ContactList.styled';
 

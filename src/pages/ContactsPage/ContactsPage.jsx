@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+} from 'redux/contacts/selectors';
 import {
   Container,
   ContactForm,
@@ -10,9 +14,9 @@ import {
   Loader,
   Notification,
 } from 'components';
-import { Title } from './App.styled';
+import { Title } from './ContactsPage.styled';
 
-export const App = () => {
+export default function ContactsPage() {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
@@ -35,4 +39,4 @@ export const App = () => {
       )}
     </Container>
   );
-};
+}
