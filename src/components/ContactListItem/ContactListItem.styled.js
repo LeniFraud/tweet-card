@@ -4,10 +4,13 @@ export const Item = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding-top: ${p => p.theme.space[3]}px;
+  padding-bottom: ${p => p.theme.space[3]}px;
+  padding-left: ${p => p.theme.space[5]}px;
+  padding-right: ${p => p.theme.space[5]}px;
 
   &:nth-child(even) {
-    background-color: #fff;
+    background-color: ${p => p.theme.colors.backgroundMain};
   }
 `;
 
@@ -15,27 +18,38 @@ export const Info = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-size: 20px;
+  font-size: ${p => p.theme.fontSizes.s}px;
+`;
+
+export const Name = styled.p`
+  font-weight: ${p => p.theme.fontWeights.medium};
+`;
+
+export const Number = styled.p`
+  font-weight: ${p => p.theme.fontWeights.bold};
 `;
 
 export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 80px;
-  height: 40px;
-  margin-left: 40px;
-  background-color: #ffcab8;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: ${p => p.theme.space[5]}px;
+  padding-top: ${p => p.theme.space[3]}px;
+  padding-bottom: ${p => p.theme.space[3]}px;
+  padding-left: ${p => p.theme.space[4]}px;
+  padding-right: ${p => p.theme.space[4]}px;
+  color: ${p => p.theme.colors.textLight};
+  font-size: ${p => p.theme.fontSizes.xs}px;
+  background-color: ${p => p.theme.colors.primary};
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.normal};
+  box-shadow: ${p => p.theme.shadows.normal};
+  transition: background-color ${p => p.theme.transition.normal},
+    box-shadow ${p => p.theme.transition.normal};
 
   &:hover,
   :focus {
-    background-color: #ff9c7a;
-    transform: scale(1.05);
+    background-color: ${p => p.theme.colors.secondary};
+    box-shadow: ${p => p.theme.shadows.accent};
   }
 `;

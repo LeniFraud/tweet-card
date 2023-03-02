@@ -4,40 +4,45 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding: 12px 20px;
-  background-color: #ececec;
-  border-radius: 8px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+  gap: ${p => p.theme.space[3]}px;
+  margin-bottom: ${p => p.theme.space[4]}px;
+  padding-top: ${p => p.theme.space[4]}px;
+  padding-bottom: ${p => p.theme.space[4]}px;
+  padding-left: ${p => p.theme.space[5]}px;
+  padding-right: ${p => p.theme.space[5]}px;
+  background-color: ${p => p.theme.colors.backgroundBook};
+  border-radius: ${p => p.theme.radii.medium};
+  box-shadow: ${p => p.theme.shadows.normal};
 `;
 
 export const Label = styled.label`
   display: flex;
   align-items: center;
-  color: #212121;
-  font-size: 20px;
-  font-weight: 600;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: ${p => p.theme.fontSizes.m}px;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  transition: color ${p => p.theme.transition.normal};
 
   &:hover,
   :focus {
-    color: #457c78;
+    color: ${p => p.theme.colors.secondary};
   }
 `;
 
 export const Input = styled.input`
   min-width: 280px;
-  margin-left: 20px;
-  padding: 8px 12px;
+  margin-left: ${p => p.theme.space[4]}px;
+  padding-top: ${p => p.theme.space[3]}px;
+  padding-bottom: ${p => p.theme.space[3]}px;
+  padding-left: ${p => p.theme.space[4]}px;
+  padding-right: ${p => p.theme.space[4]}px;
   outline: none;
-  border-radius: 4px;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: ${p => p.theme.borders.normal};
+  border-radius: ${p => p.theme.radii.normal};
+  transition: border-color ${p => p.theme.transition.normal};
 
   &:hover,
   :focus {
-    border: 2px solid #009688;
+    border-color: ${p => p.theme.colors.secondary};
   }
 `;
 
@@ -45,20 +50,22 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
-  height: 40px;
-  width: 120px;
-  background-color: #99ffdd;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-top: ${p => p.theme.space[3]}px;
+  padding-bottom: ${p => p.theme.space[3]}px;
+  padding-left: ${p => p.theme.space[4]}px;
+  padding-right: ${p => p.theme.space[4]}px;
+  color: ${p => p.theme.colors.textLight};
+  font-size: ${p => p.theme.fontSizes.s}px;
+  background-color: ${p => p.theme.colors.primary};
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.normal};
+  box-shadow: ${p => p.theme.shadows.normal};
+  transition: background-color ${p => p.theme.transition.normal},
+    box-shadow ${p => p.theme.transition.normal};
 
   &:hover,
   :focus {
-    background-color: #42ffc0;
-    transform: scale(1.05);
+    background-color: ${p => p.theme.colors.secondary};
+    box-shadow: ${p => p.theme.shadows.accent};
   }
 `;

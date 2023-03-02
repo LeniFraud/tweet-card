@@ -1,12 +1,12 @@
 import { LoginForm } from 'components';
-import { Container } from './LoginPage.styled';
+import { Section, Container } from './LoginPage.styled';
 
 export default function LoginPage() {
   return (
-    <section>
+    <Section>
       <Container>
         <LoginForm />
       </Container>
-    </section>
+    </Section>
   );
 }

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-export const HeaderBox = styled.header`
-  margin-bottom: 16px;
-  border-bottom: 1px solid #2a363b;
-  font-size: 20px;
+export const Header = styled.header`
+  padding-top: ${p => p.theme.space[4]}px;
+  padding-bottom: ${p => p.theme.space[4]}px;
+  font-size: ${p => p.theme.fontSizes.s}px;
+  background-color: ${p => p.theme.colors.backgroundLight};
+  box-shadow: ${p => p.theme.shadows.section};
 `;
 
 export const Container = styled.div`
@@ -11,7 +13,6 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 960px;
-  min-height: 64px;
   margin: 0 auto;
   padding: 0 16px;
 `;

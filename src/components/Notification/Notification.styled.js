@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Text = styled.p`
-  color: #969696;
   text-align: center;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: ${p => p.theme.fontSizes.m}px;
+  font-weight: ${p => p.theme.fontWeights.medium};
   font-style: italic;
+  opacity: ${p => p.theme.opacities.normal};
 `;

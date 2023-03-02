@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 export const Footer = styled.footer`
-  margin-top: ${p => p.theme.space[4]}px;
   padding-top: ${p => p.theme.space[5]}px;
   padding-bottom: ${p => p.theme.space[5]}px;
   color: ${p => p.theme.colors.textLight};
-  background-color: ${p => p.theme.colors.secondary};
+  background-color: ${p => p.theme.colors.backgroundDark};
   box-shadow: ${p => p.theme.shadows.section};
 `;
 

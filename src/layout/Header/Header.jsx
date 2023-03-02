@@ -1,17 +1,17 @@
 import { useSelector } from 'react-redux';
 import { AuthMenu, NavMenu, UserMenu } from 'layout';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { Container, HeaderBox } from './Header.styled';
+import { Container, Header as Section } from './Header.styled';
 
 export const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
-    <HeaderBox>
+    <Section>
       <Container>
         <NavMenu />
         {isLoggedIn ? <UserMenu /> : <AuthMenu />}
       </Container>
-    </HeaderBox>
+    </Section>
   );
 };

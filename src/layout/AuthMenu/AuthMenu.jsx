@@ -1,11 +1,11 @@
 import { routes } from 'utils/routes';
-import { Link } from './AuthMenu.styled';
+import { Wrapper, Link } from './AuthMenu.styled';
 
 export const AuthMenu = () => {
   return (
-    <div>
+    <Wrapper>
       <Link to={routes.REGISTER}>Register</Link>
       <Link to={routes.LOGIN}>Log In</Link>
-    </div>
+    </Wrapper>
   );
 };

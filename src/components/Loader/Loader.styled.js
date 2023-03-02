@@ -4,8 +4,8 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: ${p => p.theme.space[4]}px;
+  margin-bottom: ${p => p.theme.space[4]}px;
   /* position: fixed;
   top: 0;
   left: 0;

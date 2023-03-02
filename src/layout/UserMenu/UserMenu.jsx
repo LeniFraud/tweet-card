@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
-// import { useAuth } from 'hooks';
 import { selectUserName } from 'redux/auth/selectors';
 import defaultAvatar from './default-avatar.png';
-import { Wrapper, Avatar, Name } from './UserMenu.styled';
+import { Wrapper, Avatar, Text, Name, Button } from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -13,10 +12,12 @@ export const UserMenu = () => {
   return (
     <Wrapper>
       <Avatar src={avatar} alt="User Avatar" />
-      <Name>Welcome, {name}</Name>
-      <button type="button" onClick={() => dispatch(logOut())}>
+      <Text>
+        Welcome, <Name>{name}</Name>
+      </Text>
+      <Button type="button" onClick={() => dispatch(logOut())}>
         Logout
-      </button>
+      </Button>
     </Wrapper>
   );
 };
