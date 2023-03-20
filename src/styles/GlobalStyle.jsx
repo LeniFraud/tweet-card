@@ -7,7 +7,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: ${p => p.theme.colors.textDark};
-  font-size: ${p => p.theme.fontSizes.s};
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  line-height: ${p => p.theme.lineHeights.normal};
 }
 
 html {
@@ -19,7 +21,7 @@ html {
 *::after {
   padding: ${p => p.theme.space[0]}px;
   margin: ${p => p.theme.space[0]}px;
-  line-height: ${p => p.theme.lineHeights.normal};
+  
   list-style: none;
   box-sizing: inherit;
 }

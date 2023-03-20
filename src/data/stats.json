@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Fedmahn Kassad",
+    "tweets": 666,
+    "followers": 100500,
+    "avatar": "https://cdn-icons-png.flaticon.com/512/1998/1998592.png",
+    "isFollow": false
+  },
+  {
+    "id": 2,
+    "name": "Lamia Brawne",
+    "tweets": 777,
+    "followers": 20500,
+    "avatar": "https://cdn-icons-png.flaticon.com/512/616/616438.png",
+    "isFollow": false
+  },
+  {
+    "id": 3,
+    "name": "The Shrike",
+    "tweets": 999,
+    "followers": 555555,
+    "avatar": "https://cdn-icons-png.flaticon.com/512/1623/1623681.png",
+    "isFollow": false
+  },
+  {
+    "id": 4,
+    "name": "Moneta",
+    "tweets": 555,
+    "followers": 30000,
+    "avatar": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
+    "isFollow": false
+  },
+  {
+    "id": 5,
+    "name": "John Keats",
+    "tweets": 235,
+    "followers": 111222,
+    "avatar": "https://cdn-icons-png.flaticon.com/512/1998/1998749.png",
+    "isFollow": false
+  }
+]

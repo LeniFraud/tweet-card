@@ -15,3 +15,9 @@ To get acquainted and configure additional features
 3. Start development mode by running the `npm start` command.
 4. Go to [http://localhost:3000](http://localhost:3000) in your browser. This
    page will automatically reload after saving changes to the project files.
+
+## How it works
+
+1. This is a simple app for interactive user cards (for example, twitter).
+2. Just click the "Follow" button, the result saves after refreshing the page.
+3. You can create your own base or use the default one (in data/stats.json).
