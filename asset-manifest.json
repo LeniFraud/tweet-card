@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/tweet-card/static/js/main.e0656b0c.js",
+    "static/media/background.png": "/tweet-card/static/media/background.86562350dcaa714a1442.png",
+    "index.html": "/tweet-card/index.html",
+    "main.e0656b0c.js.map": "/tweet-card/static/js/main.e0656b0c.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e0656b0c.js"
+  ]
+}
